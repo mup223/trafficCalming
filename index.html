@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        body {
+          margin: 0;
+          padding: 0;
+          background: whitesmoke;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <!-- <script src="js/labels.js"></script> -->
+        <script src="data/humps_0.js"></script>
+        <script src="data/trafficCircles_1.js"></script>
+        <script src="data/raisedCrosswalk_2.js"></script>
+        <script src="data/fourWayStops_3.js"></script>
+        <script src="data/tableTop_4.js"></script>
+        <script src="data/threeWayStops_5.js"></script>
+        <script>
+        var options = {
+      center: [33.9802, -80.9957],
+      zoom: 15,
+      zoomSnap: .1,
+      zoomControl: false
+    };
+    var map = L.map('map', options);
+    // Get basemap URL from Leaflet Providers
+    var basemap_url = 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'
+    // Get basemap attributes from Leaflet Providers
+    var basemap_attributes = {
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    };
+    // requests some map tiles
+    var tiles = L.tileLayer(basemap_url, basemap_attributes);
+    map.addLayer(tiles);
+        var hash = new L.Hash(map);
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_humps_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_humps_0_0() {
+            return {
+                pane: 'pane_humps_0',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'bevel',
+                weight: 11.0,
+                fillOpacity: 0,
+            }
+        }
+        function style_humps_0_1() {
+            return {
+                pane: 'pane_humps_0',
+                opacity: 1,
+                color: 'rgba(230,255,1,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+            }
+        }
+        map.createPane('pane_humps_0');
+        map.getPane('pane_humps_0').style.zIndex = 400;
+        map.getPane('pane_humps_0').style['mix-blend-mode'] = 'normal';
+        var layer_humps_0 = new L.geoJson.multiStyle(json_humps_0, {
+            attribution: '',
+            pane: 'pane_humps_0',
+            onEachFeature: pop_humps_0,
+            styles: [style_humps_0_0,style_humps_0_1,]
+        });
+        bounds_group.addLayer(layer_humps_0);
+        map.addLayer(layer_humps_0);
+        function pop_trafficCircles_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_trafficCircles_1_0() {
+            return {
+                pane: 'pane_trafficCircles_1',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/background_circle.svg',
+            iconSize: [28.88, 28.88]
+        }),
+            }
+        }
+        function style_trafficCircles_1_1() {
+            return {
+                pane: 'pane_trafficCircles_1',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/trafficCircles.png',
+            iconSize: [25.08, 25.08]
+        }),
+            }
+        }
+        map.createPane('pane_trafficCircles_1');
+        map.getPane('pane_trafficCircles_1').style.zIndex = 401;
+        map.getPane('pane_trafficCircles_1').style['mix-blend-mode'] = 'normal';
+        var layer_trafficCircles_1 = new L.geoJson.multiStyle(json_trafficCircles_1, {
+            attribution: '',
+            pane: 'pane_trafficCircles_1',
+            onEachFeature: pop_trafficCircles_1,
+            pointToLayers: [function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_trafficCircles_1_0(feature));
+            },function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_trafficCircles_1_1(feature));
+            },
+        ]});
+        bounds_group.addLayer(layer_trafficCircles_1);
+        map.addLayer(layer_trafficCircles_1);
+        function pop_raisedCrosswalk_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_raisedCrosswalk_2_0() {
+            return {
+                pane: 'pane_raisedCrosswalk_2',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'bevel',
+                weight: 11.0,
+                fillOpacity: 0,
+            }
+        }
+        function style_raisedCrosswalk_2_1() {
+            return {
+                pane: 'pane_raisedCrosswalk_2',
+                opacity: 1,
+                color: 'rgba(0,254,25,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'bevel',
+                weight: 5.0,
+                fillOpacity: 0,
+            }
+        }
+        map.createPane('pane_raisedCrosswalk_2');
+        map.getPane('pane_raisedCrosswalk_2').style.zIndex = 402;
+        map.getPane('pane_raisedCrosswalk_2').style['mix-blend-mode'] = 'normal';
+        var layer_raisedCrosswalk_2 = new L.geoJson.multiStyle(json_raisedCrosswalk_2, {
+            attribution: '',
+            pane: 'pane_raisedCrosswalk_2',
+            onEachFeature: pop_raisedCrosswalk_2,
+            styles: [style_raisedCrosswalk_2_0,style_raisedCrosswalk_2_1,]
+        });
+        bounds_group.addLayer(layer_raisedCrosswalk_2);
+        map.addLayer(layer_raisedCrosswalk_2);
+        function pop_fourWayStops_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_fourWayStops_3_0() {
+            return {
+                pane: 'pane_fourWayStops_3',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/four_Way_Stop.png',
+            iconSize: [30.4, 30.4]
+        }),
+            }
+        }
+        function style_fourWayStops_3_1() {
+            return {
+                pane: 'pane_fourWayStops_3',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/Four Way Stop.svg',
+            iconSize: [26.599999999999998, 26.599999999999998]
+        }),
+            }
+        }
+        map.createPane('pane_fourWayStops_3');
+        map.getPane('pane_fourWayStops_3').style.zIndex = 403;
+        map.getPane('pane_fourWayStops_3').style['mix-blend-mode'] = 'normal';
+        var layer_fourWayStops_3 = new L.geoJson.multiStyle(json_fourWayStops_3, {
+            attribution: '',
+            pane: 'pane_fourWayStops_3',
+            onEachFeature: pop_fourWayStops_3,
+            pointToLayers: [function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_fourWayStops_3_0(feature));
+            },function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_fourWayStops_3_1(feature));
+            },
+        ]});
+        bounds_group.addLayer(layer_fourWayStops_3);
+        map.addLayer(layer_fourWayStops_3);
+        function pop_tableTop_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_tableTop_4_0() {
+            return {
+                pane: 'pane_tableTop_4',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/Table.svg',
+            iconSize: [30, 30]
+        }),
+            }
+        }
+        function style_tableTop_4_1() {
+            return {
+                pane: 'pane_tableTop_4',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/Table_Top.png',
+            iconSize: [30, 30]
+        }),
+            }
+        }
+        map.createPane('pane_tableTop_4');
+        map.getPane('pane_tableTop_4').style.zIndex = 404;
+        map.getPane('pane_tableTop_4').style['mix-blend-mode'] = 'normal';
+        var layer_tableTop_4 = new L.geoJson.multiStyle(json_tableTop_4, {
+            attribution: '',
+            pane: 'pane_tableTop_4',
+            onEachFeature: pop_tableTop_4,
+            pointToLayers: [function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_tableTop_4_0(feature));
+            },function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_tableTop_4_1(feature));
+            },
+        ]});
+        bounds_group.addLayer(layer_tableTop_4);
+        map.addLayer(layer_tableTop_4);
+        function pop_threeWayStops_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_threeWayStops_5_0() {
+            return {
+                pane: 'pane_threeWayStops_5',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/background_octogon.svg',
+            iconSize: [30.4, 30.4]
+        }),
+            }
+        }
+        function style_threeWayStops_5_1() {
+            return {
+                pane: 'pane_threeWayStops_5',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/Three_Way_Stop.png',
+            iconSize: [26.599999999999998, 26.599999999999998]
+        }),
+            }
+        }
+        map.createPane('pane_threeWayStops_5');
+        map.getPane('pane_threeWayStops_5').style.zIndex = 405;
+        map.getPane('pane_threeWayStops_5').style['mix-blend-mode'] = 'normal';
+        var layer_threeWayStops_5 = new L.geoJson.multiStyle(json_threeWayStops_5, {
+            attribution: '',
+            pane: 'pane_threeWayStops_5',
+            onEachFeature: pop_threeWayStops_5,
+            pointToLayers: [function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_threeWayStops_5_0(feature));
+            },function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_threeWayStops_5_1(feature));
+            },
+        ]});
+        bounds_group.addLayer(layer_threeWayStops_5);
+        map.addLayer(layer_threeWayStops_5);
+        setBounds();
+        var i = 0;
+        layer_humps_0.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            // layer.bindTooltip((layer.feature.properties['id'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['id']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_humps_0'});
+            // labels.push(layer);
+            // totalMarkers += 1;
+              layer.added = true;
+              // addLabel(layer, i);
+              i++;
+        });
+        // resetLabels([layer_humps_0]);
+        map.on("zoomend", function(){
+            resetLabels([layer_humps_0]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_humps_0]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_humps_0]);
+        });
+        </script>
+    </body>
+</html>

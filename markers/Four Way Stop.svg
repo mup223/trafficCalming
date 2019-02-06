@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="Four Way Stop.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="-75.714286"
+     inkscape:cy="560"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAABUCAMAAAArteDzAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAflBMVEX////////T09N/f3/Ozs7S0tLMzMxTAAdUAAe9ARDGARHNzc3c3NzY2Nivr6+np6ckAAMwAAQrAAR0AAqAAQuwsLCoqKj29vZFRUU/Pz/09PT39/dGRkZHR0f5+fnX19cVFRUAAAAQEBAKAAENAAH/ARYREREHAAELAAEfAAMXPZvmAAAAIHRSTlMAIEyfUExS4uPq7lJCRnB4/PT229tudijZ3yoo2dcmSDYCIHgAAAABYktHRCHEbA0WAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH4wIFDDExj4OeMgAAAShJREFUWMPt1sdWAkEUhOE7ooIZc0DFAcfw/i/onANOgA5V3bXsf1/fuszcVQeTaIeVUVVHH3W01TGlQiapgialwiah/pvr6SzUJ6N25kkT7JRQUbNTv+IqbuIqY6IqZ2IqayIqb/bqWaUzY2qaGVZTzZCabvrVHNOn5pluNdd0qfnmvqowd1WNOVZV5kg9V5m9emGXMrNTrzbot8Rs1Z8BOteYTXNd0IIWtKAFLWhBC1pQCfqrQm8GaH2rMe+2//S+1qkbs36wxyeZujWfX0ynDkyZOjJF6o4pUfdMgeowzRZ5qtPMVD1mluo1M9SAmawGzUQ1YrbqK61GzQQVMGkVMkkVNCkVNgmVMFv1DVIps1eRUJNRcRNXGRNVORNTWdPsfRlt4dv+AQUDGNaeiU1TAAAAAElFTkSuQmCC"
+       height="134"
+       width="134"
+       y="75.082726"
+       x="35.756542"
+       data-name="four Way Stop"
+       id="four_Way_Stop" />
+  </g>
+</svg>
